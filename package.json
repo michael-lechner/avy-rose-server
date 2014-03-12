@@ -1,0 +1,19 @@
+{
+  "name": "application-name",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "3.4.8",
+    "jade": "*",
+    "stylus": "*",
+    "request": "~2.34.0",
+    "cheerio": "~0.13.1"
+  },
+  "devDependencies": {
+    "nodemon": "~1.0.15",
+    "mongoose": "~3.8.8"
+  }
+}
