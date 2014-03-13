@@ -5,6 +5,13 @@
 var express = require('express');
 var http = require('http');
 var path = require('path');
+var mongoose = require('mongoose');
+
+var forecastController = require('./controllers/forecastController');
+
+mongoose.connect('mongodb://localhost/avy-rose');
+
+var ForecastModel = require('./models/forecastModel');
 
 var app = express();
 
@@ -24,7 +31,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 // development only
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
+  app.get('/all', forecastController.findAll);
 }
+
+app.get('/', forecastController.find);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
