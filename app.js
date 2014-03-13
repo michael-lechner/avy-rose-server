@@ -1,4 +1,3 @@
-
 /**
  * Module dependencies.
  */
@@ -8,8 +7,6 @@ var path = require('path');
 var mongoose = require('mongoose');
 
 var forecastController = require('./controllers/forecastController');
-
-mongoose.connect('mongodb://localhost/avy-rose');
 
 var ForecastModel = require('./models/forecastModel');
 
@@ -31,6 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // development only
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
+  mongoose.connect('mongodb://localhost/avy-rose');
   app.get('/all', forecastController.findAll);
 }
 
