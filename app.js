@@ -4,13 +4,15 @@
 var express = require('express');
 var http = require('http');
 var path = require('path');
+var db = require('./db-config.js');
 var mongoose = require('mongoose');
 
 var forecastController = require('./controllers/forecastController');
-
 var ForecastModel = require('./models/forecastModel');
 
 var app = express();
+
+db.connect();
 
 // all environments
 app.set('port', process.env.PORT || 3000);
@@ -28,10 +30,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 // development only
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
-  mongoose.connect('mongodb://localhost/avy-rose');
-  app.get('/all', forecastController.findAll);
 }
 
+/* move to dev eventually */
+app.get('/all', forecastController.findAll);
 app.get('/', forecastController.find);
 
 http.createServer(app).listen(app.get('port'), function(){

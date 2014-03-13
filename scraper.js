@@ -1,8 +1,7 @@
 var request = require('request');
 var cheerio = require('cheerio');
+var db = require('./db-config.js');
 var mongoose = require('mongoose');
-
-mongoose.connect('mongodb://localhost/avy-rose');
 
 var ForecastModel = require('./models/forecastModel');
 
@@ -97,6 +96,7 @@ var ratingBuilder = function (rating){
     return rating.toLowerCase().substring(0, rating.length - 4).trim()
 }
 
+db.connect();
 /* cleans db and then gets new report */
 init(10, getReport);
 
