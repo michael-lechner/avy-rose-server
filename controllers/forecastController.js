@@ -5,7 +5,7 @@ var forecastController = module.exports = {
     find: function (req, res) {
         ForecastModel.find().sort('-scrapeDate').exec(function (err, forecasts) {
             if(err) console.log(err);
-            res.send(forecasts.slice(0, 1));            
+            res.jsonp(forecasts.slice(0, 1));            
         });
     },
     findAll: function (req, res) {
