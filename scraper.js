@@ -58,7 +58,9 @@ var getReport = function () {
             report.zone = zone;
 
             /* description */
-            report.description = $('.span4.fx-text-area').html().trim();
+            var descripStr = $('.span4.fx-text-area').html().trim();
+            descripStr = descripStr.replace(/<[\/]{0,1}(a|A)[^><]*>/g,"");
+            report.description = descripStr;
 
             /* danger ratings */
             var at = $('.above-treeline-image').closest('tr').find('.today-text strong').text();
