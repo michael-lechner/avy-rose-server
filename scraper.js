@@ -58,7 +58,7 @@ var getReport = function () {
             report.zone = zone;
 
             /* description */
-            report.description = $('.span4.fx-text-area').html().trim();
+            report.description = $('.span4.fx-text-area').text().trim();
 
             /* danger ratings */
             var at = $('.above-treeline-image').closest('tr').find('.today-text strong').text();
