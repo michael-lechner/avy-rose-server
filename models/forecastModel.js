@@ -4,6 +4,7 @@ var ForecastSchema = new mongoose.Schema({
     scrapeDate: { type: Date, default: Date.now },
     forecastDate: String,
     zone: String,
+    description: String, 
     btRating: String,
     tlRating: String,
     atRating: String,

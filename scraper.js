@@ -57,6 +57,9 @@ var getReport = function () {
             var zone = 'front range'
             report.zone = zone;
 
+            /* description */
+            report.description = $('.span4.fx-text-area').html().trim();
+
             /* danger ratings */
             var at = $('.above-treeline-image').closest('tr').find('.today-text strong').text();
             report.atRating = ratingBuilder(at);
