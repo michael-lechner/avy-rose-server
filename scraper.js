@@ -81,6 +81,8 @@ var getReport = function () {
             report.forecast = forecast;
         }
 
+        console.log(report);
+
         report.save(function (err, doc) {
             if(err) console.log(err);
             mongoose.disconnect();  
